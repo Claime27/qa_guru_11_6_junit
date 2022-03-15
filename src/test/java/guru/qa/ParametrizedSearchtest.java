@@ -3,6 +3,7 @@ package guru.qa;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -46,7 +47,7 @@ public class ParametrizedSearchtest {
         Selenide.$$("li.serp-item").find(Condition.text(expectedText)).shouldBe(Condition.visible);
     }
 
-    static Stream<Object> mixedArgumentsTestsDataProvider(){
+    static @NotNull Stream<Object> mixedArgumentsTestsDataProvider(){
         return Stream.of(
              Arguments.of("Selenide", List.of(1,2,4), true),
              Arguments.of("Junit 5", List.of(5,6,7), false)
